@@ -1,6 +1,7 @@
 #include "matrix.h"
 #include <string.h>
 #define PI		3.14159265358979323846
+using namespace gpp;
 
 MyMatrix3::MyMatrix3()
 {
