@@ -118,82 +118,90 @@ void Game::update()
 		{
 			for (int i = 0; i < 8; i++)
 			{
-				v3[i] = matrix.scale(0.01) * v3[i];
+				v3[i] = matrix.scale(1.01) * v3[i];
 			}
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		{
+			for (int i = 0; i < 8; i++)
+			{
+				v3[i] = matrix.scale(0.99) * v3[i];
+			}
+		}
+		glNewList(index, GL_COMPILE);
+		glBegin(GL_TRIANGLES);
+		{
+			//Front Face
+			glColor3f(0.0f, 0.0f, 1.0f);
+			glVertex3f(v3[0].x, v3[0].y, v3[0].z);
+			glVertex3f(v3[1].x, v3[1].y, v3[1].z);
+			glVertex3f(v3[2].x, v3[2].y, v3[2].z);
+
+			glColor3f(0.0f, 0.0f, 1.0f);
+			glVertex3f(v3[2].x, v3[2].y, v3[2].z);
+			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
+			glVertex3f(v3[0].x, v3[0].y, v3[0].z);
+
+
+			glColor3f(1.0f, 0.0f, 0.0f);
+			glVertex3f(v3[0].x, v3[0].y, v3[0].z);
+			glVertex3f(v3[1].x, v3[1].y, v3[1].z);
+			glVertex3f(v3[5].x, v3[5].y, v3[5].z);
+
+			glColor3f(1.0f, 0.0f, 0.0f);
+			glVertex3f(v3[5].x, v3[5].y, v3[5].z);
+			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
+			glVertex3f(v3[0].x, v3[0].y, v3[0].z);
+
+
+			glColor3f(1.0f, 1.0f, 0.0f);
+			glVertex3f(v3[1].x, v3[1].y, v3[1].z);
+			glVertex3f(v3[5].x, v3[5].y, v3[5].z);
+			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
+
+			glColor3f(1.0f, 1.0f, 0.0f);
+			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
+			glVertex3f(v3[2].x, v3[2].y, v3[2].z);
+			glVertex3f(v3[1].x, v3[1].y, v3[1].z);
+
+
+			glColor3f(1.0f, 0.0f, 1.0f);
+			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
+			glVertex3f(v3[2].x, v3[2].y, v3[2].z);
+			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
+
+			glColor3f(1.0f, 0.0f, 1.0f);
+			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
+			glVertex3f(v3[7].x, v3[7].y, v3[7].z);
+			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
+
+			glColor3f(1.0f, 1.0f, 1.0f);
+			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
+			glVertex3f(v3[0].x, v3[0].y, v3[0].z);
+			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
+
+			glColor3f(1.0f, 1.0f, 1.0f);
+			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
+			glVertex3f(v3[7].x, v3[7].y, v3[7].z);
+			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
+
+			glColor3f(20.0f, 0.0f, 1.0f);
+			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
+			glVertex3f(v3[5].x, v3[5].y, v3[5].z);
+			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
+
+			glColor3f(20.0f, 0.0f, 1.0f);
+			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
+			glVertex3f(v3[7].x, v3[7].y, v3[7].z);
+			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
+
+
+		}
+		glEnd();
+		glEndList();
+		cout << "Update up" << endl;
 	}
-	glNewList(index, GL_COMPILE);
-	glBegin(GL_TRIANGLES);
-	{
-		//Front Face
-		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(v3[0].x, v3[0].y, v3[0].z);
-		glVertex3f(v3[1].x, v3[1].y, v3[1].z);
-		glVertex3f(v3[2].x, v3[2].y, v3[2].z);
-
-		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(v3[2].x, v3[2].y, v3[2].z);
-		glVertex3f(v3[3].x, v3[3].y, v3[3].z);
-		glVertex3f(v3[0].x, v3[0].y, v3[0].z);
-
-
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(v3[0].x, v3[0].y, v3[0].z);
-		glVertex3f(v3[1].x, v3[1].y, v3[1].z);
-		glVertex3f(v3[5].x, v3[5].y, v3[5].z);
-
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(v3[5].x, v3[5].y, v3[5].z);
-		glVertex3f(v3[4].x, v3[4].y, v3[4].z);
-		glVertex3f(v3[0].x, v3[0].y, v3[0].z);
-
-
-		glColor3f(1.0f, 1.0f, 0.0f);
-		glVertex3f(v3[1].x, v3[1].y, v3[1].z);
-		glVertex3f(v3[5].x, v3[5].y, v3[5].z);
-		glVertex3f(v3[6].x, v3[6].y, v3[6].z);
-
-		glColor3f(1.0f, 1.0f, 0.0f);
-		glVertex3f(v3[6].x, v3[6].y, v3[6].z);
-		glVertex3f(v3[2].x, v3[2].y, v3[2].z);
-		glVertex3f(v3[1].x, v3[1].y, v3[1].z);
-
-
-		glColor3f(1.0f, 0.0f, 1.0f);
-		glVertex3f(v3[3].x, v3[3].y, v3[3].z);
-		glVertex3f(v3[2].x, v3[2].y, v3[2].z);
-		glVertex3f(v3[6].x, v3[6].y, v3[6].z);
-
-		glColor3f(1.0f, 0.0f, 1.0f);
-		glVertex3f(v3[6].x, v3[6].y, v3[6].z);
-		glVertex3f(v3[7].x, v3[7].y, v3[7].z);
-		glVertex3f(v3[3].x, v3[3].y, v3[3].z);
-
-		glColor3f(1.0f, 1.0f, 1.0f);
-		glVertex3f(v3[3].x, v3[3].y, v3[3].z);
-		glVertex3f(v3[0].x, v3[0].y, v3[0].z);
-		glVertex3f(v3[4].x, v3[4].y, v3[4].z);
-
-		glColor3f(1.0f, 1.0f, 1.0f);
-		glVertex3f(v3[4].x, v3[4].y, v3[4].z);
-		glVertex3f(v3[7].x, v3[7].y, v3[7].z);
-		glVertex3f(v3[3].x, v3[3].y, v3[3].z);
-
-		glColor3f(20.0f, 0.0f, 1.0f);
-		glVertex3f(v3[4].x, v3[4].y, v3[4].z);
-		glVertex3f(v3[5].x, v3[5].y, v3[5].z);
-		glVertex3f(v3[6].x, v3[6].y, v3[6].z);
-
-		glColor3f(20.0f, 0.0f, 1.0f);
-		glVertex3f(v3[6].x, v3[6].y, v3[6].z);
-		glVertex3f(v3[7].x, v3[7].y, v3[7].z);
-		glVertex3f(v3[4].x, v3[4].y, v3[4].z);
-
-
-	}
-	glEnd();
-	glEndList();
-	cout << "Update up" << endl;
+	
 }
 
 void Game::draw()
