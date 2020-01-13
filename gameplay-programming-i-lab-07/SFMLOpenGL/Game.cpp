@@ -57,7 +57,7 @@ void Game::initialize()
 	glMatrixMode(GL_MODELVIEW);
 	glTranslatef(0, 0, -8);
 
-	//glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 	// glNewList(index, GL_COMPILE);
 	// Creates a new Display List
 	// Initalizes and Compiled to GPU
@@ -69,20 +69,10 @@ void Game::update()
 {
 	elapsed = clock.getElapsedTime();
 
-	if (elapsed.asSeconds() >= 1.0f)
+	if (elapsed.asSeconds() >= 1.0f / 60.0f)
 	{
 		clock.restart();
 
-		if (!updatable)
-		{
-			updatable = true;
-		}
-		else
-			updatable = false;
-	}
-
-	if (updatable)
-	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 		{
 			for (int i = 0; i < 8; i++)
@@ -144,14 +134,14 @@ void Game::update()
 
 
 			glColor3f(1.0f, 0.0f, 0.0f);
-			glVertex3f(v3[0].x, v3[0].y, v3[0].z);
-			glVertex3f(v3[1].x, v3[1].y, v3[1].z);
 			glVertex3f(v3[5].x, v3[5].y, v3[5].z);
+			glVertex3f(v3[1].x, v3[1].y, v3[1].z);
+			glVertex3f(v3[0].x, v3[0].y, v3[0].z);
 
 			glColor3f(1.0f, 0.0f, 0.0f);
-			glVertex3f(v3[5].x, v3[5].y, v3[5].z);
-			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
 			glVertex3f(v3[0].x, v3[0].y, v3[0].z);
+			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
+			glVertex3f(v3[5].x, v3[5].y, v3[5].z);
 
 
 			glColor3f(1.0f, 1.0f, 0.0f);
@@ -165,36 +155,37 @@ void Game::update()
 			glVertex3f(v3[1].x, v3[1].y, v3[1].z);
 
 
-			glColor3f(1.0f, 0.0f, 1.0f);
+			glColor3f(1.0f, 0.0f, 0.5f);
 			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
 			glVertex3f(v3[2].x, v3[2].y, v3[2].z);
 			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
+			
 
-			glColor3f(1.0f, 0.0f, 1.0f);
+			glColor3f(1.0f, 0.0f, 0.5f);
 			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
 			glVertex3f(v3[7].x, v3[7].y, v3[7].z);
 			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
 
+
 			glColor3f(1.0f, 1.0f, 1.0f);
-			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
+			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
 			glVertex3f(v3[0].x, v3[0].y, v3[0].z);
-			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
-
-			glColor3f(1.0f, 1.0f, 1.0f);
-			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
-			glVertex3f(v3[7].x, v3[7].y, v3[7].z);
 			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
 
-			glColor3f(20.0f, 0.0f, 1.0f);
-			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
-			glVertex3f(v3[5].x, v3[5].y, v3[5].z);
-			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
-
-			glColor3f(20.0f, 0.0f, 1.0f);
-			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
+			glColor3f(1.0f, 1.0f, 1.0f);
+			glVertex3f(v3[3].x, v3[3].y, v3[3].z);
 			glVertex3f(v3[7].x, v3[7].y, v3[7].z);
 			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
 
+			glColor3f(0.2f, 0.0f, 0.2f);
+			glVertex3f(v3[6].x, v3[6].y, v3[6].z);
+			glVertex3f(v3[5].x, v3[5].y, v3[5].z);
+			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
+
+			glColor3f(0.2f, 0.0f, 0.2f);
+			glVertex3f(v3[4].x, v3[4].y, v3[4].z);
+			glVertex3f(v3[7].x, v3[7].y, v3[7].z);	
+		glVertex3f(v3[6].x, v3[6].y, v3[6].z);
 
 		}
 		glEnd();
