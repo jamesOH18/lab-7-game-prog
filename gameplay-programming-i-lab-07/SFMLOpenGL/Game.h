@@ -5,7 +5,7 @@
 #include <gl/GLU.h>
 
 #include <Vector3.h>
-
+#include <matrix.h>
 
 using namespace std;
 using namespace sf;
@@ -32,4 +32,6 @@ private:
 	float rotationAngle = 0.0f;
 	
 	gpp::MyVector3 v3[8];
+	gpp::MyMatrix3 matrix;
+	
 };
